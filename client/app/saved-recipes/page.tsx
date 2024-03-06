@@ -13,7 +13,7 @@ import axios from "axios";
 import { useGetUserID } from "@/hooks/useGetUserID";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
+axios.defaults.withCredentials = true;
 
 const page = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
@@ -23,7 +23,7 @@ const page = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/recipes/savedRecipes/${userID}`
+          `https://recipe-app-mern-six.vercel.app/recipes/savedRecipes/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
