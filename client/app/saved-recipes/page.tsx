@@ -14,6 +14,7 @@ import { useGetUserID } from "@/hooks/useGetUserID";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+
 const page = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const userID = useGetUserID();
@@ -39,15 +40,19 @@ const page = () => {
         <li>
           <Card className="w-[350px]">
             <CardHeader>
+              {/* @ts-ignore */}
               <CardTitle>{recipe.name}</CardTitle>
             </CardHeader>
             <CardContent>
+              {/* @ts-ignore */}
               <p>{recipe.description}</p>
             </CardContent>
             <CardContent>
+              {/* @ts-ignore */}
               <Image src={recipe.imageUrl} alt="img" width={280} height={50}/>
             </CardContent>
             <CardContent>
+              {/* @ts-ignore */}
               <p>{recipe.cookingTime} minutes</p>
             </CardContent>
           </Card>

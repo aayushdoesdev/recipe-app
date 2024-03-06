@@ -30,12 +30,12 @@ const page = () => {
     userOwner: userID,
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
     setRecipe({ ...recipe, [name]: value });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
       await axios.post(

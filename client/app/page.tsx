@@ -45,7 +45,7 @@ export default function Home() {
     fetchSavedRecipes()
   },[])
 
-  const saveRecipe = async (recipeID) => {
+  const saveRecipe = async (recipeID: any) => {
     try {
       const response = await axios.put("http://localhost:4000/recipes", {
         recipeID,
@@ -56,7 +56,7 @@ export default function Home() {
       console.log(err);
     }
   };
-
+  {/* @ts-ignore */}
   const isRecipeSaved = (id) => savedRecipes.includes(id);
 
   return (
@@ -66,24 +66,33 @@ export default function Home() {
       </div>
       <ul className="flex flex-wrap justify-center gap-12 mt-8">
         {recipes.map((recipe) => (
+          //@ts-ignore
           <li key={recipe._id}>
             <Card className="max-w-[350px]">
           <CardHeader>
+            {/* @ts-ignore */}
             <CardTitle>{recipe.name}</CardTitle>
+            {/* @ts-ignore */}
             <CardDescription>{recipe.description}</CardDescription>
           </CardHeader>
           <CardContent>
+            {/* @ts-ignore */}
             <Image src={recipe.imageUrl} alt="img" width={280} height={50} />
           </CardContent>
           <CardContent>
+            {/* @ts-ignore */}
             <p>{recipe.instruction}</p>
           </CardContent>
           <CardContent>
+            {/* @ts-ignore */}
             <p>Cooking Time: {recipe.cookingTime} mins</p>
           </CardContent>
           <CardFooter>
+            {/* @ts-ignore */}
             <Button onClick={() => saveRecipe(recipe._id)}
+            //@ts-ignore
             disabled={isRecipeSaved(recipe._id)}>
+              {/* @ts-ignore */}
               {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
             </Button>
           </CardFooter>
