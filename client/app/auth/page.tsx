@@ -29,10 +29,11 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async () => {
     try {
-      const result = await axios.post("http://localhost:4000/auth/register", {
+      const result = await axios.post("https://recipe-app-mern-six.vercel.app/auth/register", {
         username,
         password,
       });
@@ -85,10 +86,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [_, setCookies] = useCookies(["access_token"]);
   const router = useRouter();
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async () => {
     try {
-      const result = await axios.post("http://localhost:4000/auth/login", {
+      const result = await axios.post("https://recipe-app-mern-six.vercel.app/auth/login", {
         username,
         password,
       });
