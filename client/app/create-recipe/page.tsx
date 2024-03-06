@@ -34,12 +34,13 @@ const page = () => {
     const { name, value } = event.target;
     setRecipe({ ...recipe, [name]: value });
   };
-
+  
+  axios.defaults.withCredentials = true  
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
       await axios.post(
-        "http://localhost:4000/recipes/create",
+        "https://recipe-app-mern-six.vercel.app/recipes/create",
         { ...recipe },
         {
           headers: { authorization: cookies.access_token },
