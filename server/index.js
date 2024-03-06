@@ -8,7 +8,13 @@ import { recipeRouter } from "./routes/recipes.route.js";
 const app = express();
 
 // MIDDLEWARES
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://recipe-app-mern-six.vercel.app"],
+    methods: ["POST", "GET", "PUT"],
+    credentials: true
+  }
+));
 app.use(express.json());
 app.use("/auth", userRouter)
 app.use("/recipes", recipeRouter)
