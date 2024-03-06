@@ -19,10 +19,11 @@ export default function Home() {
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   const userID = useGetUserID();
-
+  axios.defaults.withCredentials = true;
+  
   const fetchRecipes = async() =>{
     try {
-      const response = await axios.get("http://localhost:4000/recipes/")
+      const response = await axios.get("https://recipe-app-mern-six.vercel.app/recipes/")
       setRecipes(response.data)
     } catch (err) {
       console.error(err)
@@ -32,7 +33,7 @@ export default function Home() {
   const fetchSavedRecipes = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/recipes/savedRecipes/ids/${userID}`
+        `https://recipe-app-mern-six.vercel.app/recipes/savedRecipes/ids/${userID}`
       );
       setSavedRecipes(response.data.savedRecipes);
     } catch (err) {
@@ -47,7 +48,7 @@ export default function Home() {
 
   const saveRecipe = async (recipeID: any) => {
     try {
-      const response = await axios.put("http://localhost:4000/recipes", {
+      const response = await axios.put("https://recipe-app-mern-six.vercel.app/recipes", {
         recipeID,
         userID,
       });
